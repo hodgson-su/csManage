@@ -12,42 +12,7 @@
 	</label>
 	<button class="btn">登录</button>
 	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
-	<script type="text/javascript">
-		var login = {};
-		$('.btn').one('click',function(){
-			login.enter();
-		});
-		login.enter = function(){
-			login.username = $("[name='username']").val();
-			login.password = $("[name='password']").val();
-			
-			login.judge();
-
-			$('.btn').one('click',function(){
-				login.enter();
-			});
-		}
-		login.judge = function(){
-			$.ajax({
-				url:'/api/admin/session',
-				type:'post',
-				dataType:'json',
-				data:{
-					"user[full_name]":login.username,
-					"user[password]":login.password,
-				},
-				complete:function(result){
-					if(result.status === 200){
-						console.log(result);
-						console.log('ok');
-					}else{
-						console.log('error');
-					}
-				}
-				
-			})
-		}
-		
-	</script>
+	<script src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="../assets/js/public.js"></script>
 </body>
 </html>
